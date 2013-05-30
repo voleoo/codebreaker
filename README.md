@@ -1,6 +1,6 @@
 # Codebreaker
 
-TODO: Write a gem description
+This is Game
 
 ## Installation
 
