@@ -1,0 +1,6 @@
+{:winer=>true, :name=>"Viktor", :guess_number=>"1343", :last_input=>"1343", :steps=>2}
+{:winer=>true, :name=>"viktor", :guess_number=>"1416", :last_input=>"1416", :steps=>2}
+{:winer=>false, :name=>"Valera", :guess_number=>"3436", :last_input=>"2134", :steps=>6}
+{:winer=>true, :name=>"!xsdxsdx", :guess_number=>"5316", :last_input=>"5316", :step=>2}
+{:winer=>true, :name=>"@qw", :guess_number=>"4552", :last_input=>"4552", :step=>2}
+{:winer=>true, :name=>"Qwq", :guess_number=>"3245", :last_input=>"3245", :step=>2}
