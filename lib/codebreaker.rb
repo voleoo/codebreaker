@@ -7,6 +7,7 @@ module Codebreaker
     def initialize(output = $stdout)
       @output = output
       @guess_number = get_guess_number
+      @iterations = 15
     end
 
     def start
@@ -74,7 +75,7 @@ module Codebreaker
     end
 
     def save_result(hash, file = "game_stat.txt")
-      File.open(file, "a") { |file| file.puts(hash) }
+      File.open(file, "a+") { |file| file.puts(hash) }
     end
 
     def get_user_name
