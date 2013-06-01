@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Codebreaker::VERSION
   spec.authors       = ["Viktor Leonets"]
   spec.email         = ["4405511@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  #spec.description   = %q{TODO: Write a gem description}
+  #spec.summary       = %q{TODO: Write a gem summary}
   spec.homepage      = ""
   spec.license       = "MIT"
 
