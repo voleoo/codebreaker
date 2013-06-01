@@ -33,19 +33,3 @@ At any time during a game, the code-breaker can request a hint, at which point t
 
 * Code-breaker saves score
 After the game is won or lost, the code-breaker can opt to save information about the game: who (initials?), how many turns, and so on.
-
-
-Example
--------
-```ruby
-require "codebreaker"
-Codebreaker::Game.new().start
-```
-
-Simple game session
--------------------
-```
-Welcome to Codebreaker!
-Enter first guess:
-
-```
