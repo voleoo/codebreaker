@@ -134,6 +134,14 @@ module Codebreaker
         it "I want to play more"
     end
 
+    describe "#hint" do
+      let(:game)   { Game.new() }
+        it "Hint ..." do
+          game.instance_variable_set( :@guess_number, "1234")
+          game.hint().should == "1???" or "?2??" or "??3?" or "???4" 
+        end
+    end
+
     describe "#save_result" do
       let(:game)   { Game.new() }
         it "save_result" do

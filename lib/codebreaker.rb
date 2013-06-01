@@ -23,7 +23,7 @@ module Codebreaker
         @input = gets.chomp
 
       if @input == "hint" or @input == "h" 
-        @output.puts "hint_hint_hint"
+        @output.puts hint
         next
       end
 
@@ -111,6 +111,12 @@ module Codebreaker
       guess_number = String.new
       4.times { guess_number += rand(1..6).to_s }
       guess_number
+    end
+
+    def hint
+      index = rand(0..3)
+        array = @guess_number.split(//)
+        array.each_index {|i| array[i] = "?" if i!=index}.join 
     end
   end
 end
