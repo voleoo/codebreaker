@@ -18,9 +18,8 @@ module Codebreaker
 
     def cycle_game
       @count = 0
-      @iterations
       while @count < @iterations do
-        @input = gets.chomp
+      @input = gets.chomp
 
       if @input == "hint" or @input == "h" 
         @output.puts hint
@@ -59,10 +58,8 @@ module Codebreaker
         @output.puts "Try again?"
       end
 
-      save_result({ 
-        :winer => winer, :name => name, :guess_number => @guess_number, 
+      save_result({ :winer => winer, :name => name, :guess_number => @guess_number, 
         :last_input => @input, :step => @count+1})
-
       start_game
     end
 
@@ -90,11 +87,11 @@ module Codebreaker
 
     def get_string_result(array)
       @new_array = Array.new
-      @a = @guess_number.split(//)
-      @a.each_index  { | key |
-        if array[key] == @a[key]
+      a = @guess_number.split(//)
+      a.each_index  { | key |
+        if array[key] == a[key]
           @new_array << '+'
-        elsif @a.include?(array[key])
+        elsif a.include?(array[key])
           @new_array << '-'
         else
           @new_array << nil

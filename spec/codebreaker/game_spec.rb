@@ -35,25 +35,30 @@ module Codebreaker
           game.get_user_name.should include("Vasya Pupkin")
         end
 
-        it "not valid name"
+        it "not valid name"  # я пока не нашол решения как тестить "next" который все портит и программа останавливается
     end
 
     describe "#cycle_game" do
       let(:output) { mock('output').as_null_object }   
       let(:game)   { Game.new(output) }
-
-        it "Show a preliminary result" do
+      before(:each) { 
           game.instance_variable_set( :@guess_number, "1234")
           game.instance_variable_set( :@iterations, 1)
           game.stub(:winer).and_return()
-          game.stub(:gets).and_return("4321")
 
+      }
+        it "Show a preliminary result" do
+          game.stub(:gets).and_return("4321")
           output.should_receive(:puts).with('----')
           game.cycle_game
         end
 
-        it "Show hint"
-        it "uncorrect input"
+        it "uncorrect input" do
+            game.stub(:input_validate?).and_return(false)
+            game.stub(:gets).and_return("~4321")
+            output.should_receive(:puts).with("Please enter code of four numbers between 1 and 6") # я пока не нашол решения как тестить "next" который все портит и программа останавливается
+    end
+        end
     end
 
     describe "#winer" do
@@ -67,41 +72,33 @@ module Codebreaker
           game.stub(:save_result).and_return()
           game.stub(:exit).and_return()
       }
+      after(:each) { 
+          game.winer(true)
+      }
         it "Space string" do
           output.should_receive(:puts).with(' ')
-          game.winer(true)
         end
-
         it "Name winner" do
           output.should_receive(:puts).with("Vasya Pupkin you're winner!")
-          game.winer(true)
         end
-
         it "Guess number" do
           output.should_receive(:puts).with("Guess number 1234")
-          game.winer(true)
         end
-
         it "Inputed number" do
           output.should_receive(:puts).with("Inputed number 1234")
-          game.winer(true)
         end
-
         it "Try again?" do
           output.should_receive(:puts).with("Try again?")
-          game.winer(true)
         end
 
         it "False Game ower!" do
           output.should_receive(:puts).with("Game ower!")
           game.winer(false)
         end
-
         it "False Try again?" do
           output.should_receive(:puts).with("Try again?")
           game.winer(false)
         end
-
     end
 
     describe "#get_string_result" do
@@ -131,14 +128,14 @@ module Codebreaker
     end
 
     describe "#start_game" do
-        it "I want to play more"
+        it "I want to play more" # я пока не нашол решения как тестить "exit"
     end
 
     describe "#hint" do
       let(:game)   { Game.new() }
         it "Hint ..." do
           game.instance_variable_set( :@guess_number, "1234")
-          game.hint().should == "1???" or "?2??" or "??3?" or "???4" 
+          game.hint().should include("1???", "?2??", "??3?", "???4") # и здесь у меня трабла hint() может одниз из предполагаемых результатов, товарищи подскажите 
         end
     end
 
