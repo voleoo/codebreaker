@@ -57,7 +57,6 @@ module Codebreaker
             game.stub(:input_validate?).and_return(false)
             game.stub(:gets).and_return("~4321")
             output.should_receive(:puts).with("Please enter code of four numbers between 1 and 6") # я пока не нашол решения как тестить "next" который все портит и программа останавливается
-    end
         end
     end
 
