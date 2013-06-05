@@ -3,11 +3,11 @@ require 'spec_helper'
 
 module Codebreaker
   describe Game do
+    let(:output) { mock('output').as_null_object }   
+    let(:game)   { Game.new(output) }
+
 
     describe "#start" do
-      let(:output) { mock('output').as_null_object }   
-      let(:game)   { Game.new(output) }
-
       it "sends a welcome message" do
         output.should_receive(:puts).with('Welcome to Codebreaker!')
         game.stub(:cycle_game).and_return('')
@@ -22,10 +22,7 @@ module Codebreaker
     end
 
     describe "#get_user_name" do
-      let(:output) { mock('output').as_null_object }   
-      let(:game)   { Game.new(output) }
-        
-        it "you are prompted for the name" do
+          it "you are prompted for the name" do
           output.should_receive(:puts).with('Please enter your name:')
           game.get_user_name
         end
@@ -39,8 +36,6 @@ module Codebreaker
     end
 
     describe "#cycle_game" do
-      let(:output) { mock('output').as_null_object }   
-      let(:game)   { Game.new(output) }
       before(:each) { 
           game.instance_variable_set( :@guess_number, "1234")
           game.instance_variable_set( :@iterations, 1)
@@ -61,8 +56,6 @@ module Codebreaker
     end
 
     describe "#winer" do
-      let(:output) { mock('output').as_null_object }   
-      let(:game)   { Game.new(output) }
       before(:each) { 
           game.instance_variable_set( :@guess_number, "1234")
           game.instance_variable_set( :@input, "1234")
@@ -101,7 +94,6 @@ module Codebreaker
     end
 
     describe "#get_string_result" do
-      let(:game)   { Game.new() }
       before(:each) { 
         game.instance_variable_set( :@guess_number, "1234")
       }
@@ -120,7 +112,6 @@ module Codebreaker
     end
 
     describe "#get_guess_number" do
-      let(:game)   { Game.new() }
         it "Return guess_number" do
           game.get_guess_number.should match(/^[1-6]{4}$/)
         end
@@ -131,7 +122,6 @@ module Codebreaker
     end
 
     describe "#hint" do
-      let(:game)   { Game.new() }
         it "Hint ..." do
           game.instance_variable_set( :@guess_number, "1234")
           game.hint().should include("1???", "?2??", "??3?", "???4") # и здесь у меня трабла hint() может одниз из предполагаемых результатов, товарищи подскажите 
@@ -139,7 +129,6 @@ module Codebreaker
     end
 
     describe "#save_result" do
-      let(:game)   { Game.new() }
         it "save_result" do
           game.save_result("test string", "test_save_result.txt")
           IO.read("test_save_result.txt").should include("test string")

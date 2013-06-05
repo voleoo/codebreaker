@@ -18,18 +18,20 @@ module Codebreaker
 
     def cycle_game
       @count = 0
+
       while @count < @iterations do
-      @input = gets.chomp
 
-      if @input == "hint" or @input == "h" 
-        @output.puts hint
-        next
-      end
+        @input = gets.chomp
 
-      unless input_validate? 
-        @output.puts 'Please enter code of four numbers between 1 and 6'
-        next
-      end
+        if @input == "hint" or @input == "h" 
+          @output.puts hint
+          next
+        end
+
+        unless input_validate? 
+          @output.puts 'Please enter code of four numbers between 1 and 6'
+          next
+        end
 
         @string_result = get_string_result(@input.split(//))
         
@@ -41,6 +43,7 @@ module Codebreaker
 
         @count += 1
       end
+
       @count -= 1
       winer(false)
     end
